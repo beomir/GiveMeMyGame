@@ -1,0 +1,362 @@
+  <!DOCTYPE html>
+  <html>
+  <head>
+  <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+  <meta content="utf-8" http-equiv="encoding">
+  <title>Panel do losowania Gry na dzisiaj</title> 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <style>
+body
+{
+background-color: #222222;
+font-size: 24px;
+color: white;
+margin: 0 !important;
+}
+
+
+.main input {
+    font-size: 1em;
+    color: #fff;
+    background: #00BCD4;
+    border: 1px solid #00BCD4;
+    outline: none;
+    cursor: pointer;
+    padding: .7em 1em;
+    margin-top: 2em;
+    -webkit-appearance: none;
+    width: 100%;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -ms-border-radius: 2px;
+    -o-border-radius: 2px;
+    border-radius: 2px;
+}
+
+.main input:hover {
+    background: transparent;
+    color: #00BCD4;
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    -ms-transition: 0.5s all;
+}
+
+button {
+    font-size: 1em;
+    color: #fff;
+    background: #00BCD4;
+    border: 1px solid #00BCD4;
+    outline: none;
+    cursor: pointer;
+    padding: .7em 1em;
+    margin-top: 2em;
+    -webkit-appearance: none;
+    width: 100%;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -ms-border-radius: 2px;
+    -o-border-radius: 2px;
+    border-radius: 2px;
+}
+
+button:hover {
+    background: transparent;
+    color: #00BCD4;
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    -ms-transition: 0.5s all;
+}
+
+.nav-panel {
+	float: left;
+	max-width:30%;
+	background: #2309ca;
+	border-radius:10px;
+	padding: 8px;
+}
+
+.central {
+
+    padding: 2em;
+    background-size: cover;
+    -webkit-box-shadow: 0px 5px 9px 0px rgba(0, 0, 0, 0.68);
+    -moz-box-shadow: 0px 5px 9px 0px rgba(0, 0, 0, 0.68);
+    -o-box-shadow: 0px 5px 9px 0px rgba(0, 0, 0, 0.68);
+    -ms-box-shadow: 0px 5px 9px 0px rgba(0, 0, 0, 0.68);
+    box-shadow: 0px 5px 9px 0px rgba(0, 0, 0, 0.68);
+    text-align: left;
+    border: 1px solid rgba(255, 255, 255, 0.52);
+
+	background: #0066d4;
+	border-radius:10px;
+	padding: 5px;
+	margin-left:auto;
+	margin-right:auto;
+	width: 50%;
+}
+
+.right-bar{
+	 padding: 2em;
+    background-size: cover;
+    -webkit-box-shadow: 0px 5px 9px 0px rgba(0, 0, 0, 0.68);
+    -moz-box-shadow: 0px 5px 9px 0px rgba(0, 0, 0, 0.68);
+    -o-box-shadow: 0px 5px 9px 0px rgba(0, 0, 0, 0.68);
+    -ms-box-shadow: 0px 5px 9px 0px rgba(0, 0, 0, 0.68);
+    box-shadow: 0px 5px 9px 0px rgba(0, 0, 0, 0.68);
+    text-align: left;
+    border: 1px solid rgba(255, 255, 255, 0.52);
+	background: red;
+	border-radius:10px;
+	padding: 5px;
+	position: fixed;
+	top:33%;
+	right: 0 
+}
+
+.left-bar{
+	 padding: 2em;
+    background-size: cover;
+    -webkit-box-shadow: 0px 5px 9px 0px rgba(0, 0, 0, 0.68);
+    -moz-box-shadow: 0px 5px 9px 0px rgba(0, 0, 0, 0.68);
+    -o-box-shadow: 0px 5px 9px 0px rgba(0, 0, 0, 0.68);
+    -ms-box-shadow: 0px 5px 9px 0px rgba(0, 0, 0, 0.68);
+    box-shadow: 0px 5px 9px 0px rgba(0, 0, 0, 0.68);
+    text-align: left;
+    border: 1px solid rgba(255, 255, 255, 0.52);
+	background: orange;
+	border-radius:10px;
+	padding: 5px;
+	position: absolute;
+	top:70%;
+	left: 0 
+}
+
+.newGame input{
+   font-size: 1em;
+    background: #6495ED;
+    color: black;
+    border: 1px solid black;
+	margin-top: 0.25em;
+    -webkit-appearance: none;
+    width: 90%;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -ms-border-radius: 2px;
+    -o-border-radius: 2px;
+    border-radius: 2px;
+}
+
+.newGame input:hover {
+    background: transparent;
+    color: #00BCD4;
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    -ms-transition: 0.5s all;
+}
+
+.addNew{
+	 padding: 2em;
+    background-size: cover;
+    -webkit-box-shadow: 0px 5px 9px 0px rgba(0, 0, 0, 0.68);
+    -moz-box-shadow: 0px 5px 9px 0px rgba(0, 0, 0, 0.68);
+    -o-box-shadow: 0px 5px 9px 0px rgba(0, 0, 0, 0.68);
+    -ms-box-shadow: 0px 5px 9px 0px rgba(0, 0, 0, 0.68);
+    box-shadow: 0px 5px 9px 0px rgba(0, 0, 0, 0.68);
+    text-align: left;
+    border: 1px solid rgba(255, 255, 255, 0.52);
+	background: red;
+	border-radius:10px;
+	padding: 5px;
+	position: absolute;
+	top:13%;
+	right: 0 
+}
+
+
+
+</style>
+  </head> 
+<body>
+ <h1 style="text-align:center">Panel do losowania gier z pliku CSV</h1> 
+
+
+
+<div class="nav-panel">
+	<h3> Wybierz plik CSV z Twoimi grami
+	  <form class="main" id="myForm">
+	    <input type="file" id="csvFile" style="display: none;" accept=".csv" onchange="document.getElementById('power').click();"/>
+		<input type="button" value="Wybierz plik" onclick="document.getElementById('csvFile').click();" />
+		<input style="display:none" id="power" type="submit" value="Powierdź" />
+		
+	  </form>
+	  </h3>
+	  <div>
+		<button onclick="drawTheResultFromFile()">Losuj grę</button>
+		
+	  </div>
+	  
+	   <div>
+		<button onclick="addGameManually()">Dodaj grę ręcznie</button>
+		
+	  </div>
+</div>
+<div style="display:none" id="centralMenu" class="central">
+	
+
+	<div id="resultOfDraw"></div>
+</div>
+<div id="rightMenu" style="display:none" class="right-bar">
+	<div id="informationAfterLoadFile" style="font-weight: bold"></div>
+	<div id="fileContent" style="font-size: 14px;font-weight:italic"></div>
+</div>
+<div class="addNew" id="addNew" lang="1" style="display:none">
+	<form id="newGameForm" class="newGame">
+		  <label for="fname" style="font-weight: bold">Dodaj grę:</label><br>
+		  <input  type="text" id="newGame" name="newGame" placeholder="Nowa gra"><br>
+		  <input style="min-width:100%;cursor:pointer" type="submit" value="Dodaj">
+	</form> 
+</div>
+<div id="left-bar" style="display:none" class="left-bar">
+	<div id="summary"><span id="results" style="color:#9de0ff"></span></div>
+</div>
+  <script>
+	let arrayWithResultsOfDraws = [];
+	let sortedResultsArray = [];
+    const myForm = document.getElementById("myForm");
+    const newGameForm = document.getElementById("newGameForm");
+    const csvFile = document.getElementById("csvFile");
+	const centralMenu = document.getElementById("centralMenu");
+	const rightMenu = document.getElementById("rightMenu");
+	let counterOfDraw = 0;
+	let counter = 0;
+	let textData = "";
+	let arrayWithFileContent = [];
+	let drawingResults = "";
+	let resultsOfDraws = "";
+	//let insideLoop;
+	//let outsideLoop;
+	//let together;
+	let loadedGame = "";
+	
+	let arraySummaryList = [];
+	
+	newGameForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+	  let addedNewGameFromForm = $('#newGame').val();
+	  $('#newGame').val("");
+		arrayWithFileContent.push(addedNewGameFromForm);
+		 
+		document.getElementById("informationAfterLoadFile").innerHTML = "Wczytane gry:";
+		let displayingText2= arrayWithFileContent.toString()
+	
+		document.getElementById("fileContent").innerHTML = displayingText2.replace(/,/g, '<br>');
+		$("#rightMenu").show(500);
+	  })
+	
+    myForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      const input = csvFile.files[0];
+      const reader = new FileReader();
+		$('#addNew').show(500);
+		$("#addNew").attr("lang","0");
+      reader.onload = function (e) {
+	
+        const text = e.target.result;
+		counter = counter + 1;
+		document.getElementById("informationAfterLoadFile").innerHTML = "Wczytane gry:";
+	    arrayWithFileContent = text.split(/(?:\r\n|\r|\n)/g);
+	   		displayingText = arrayWithFileContent.toString();
+	   document.getElementById("fileContent").innerHTML =  displayingText.replace(/,/g, '<br>');;
+		$("#rightMenu").show(500); 
+      };
+		
+      reader.readAsText(input);
+    });
+	
+
+	function drawTheResultFromFile(){
+		$("#centralMenu").show(500);
+		document.getElementById("results").innerHTML = "Wyniki po: " + (counterOfDraw+1) +" losowaniach:"
+	if(arrayWithFileContent.length > 0){
+		//losowanie z tablicy wczytanych wartosci z pliku
+	let arrayResult = arrayWithFileContent[Math.floor(Math.random() * arrayWithFileContent.length)];
+		counterOfDraw = counterOfDraw + 1;
+		arrayWithResultsOfDraws.push(arrayResult);
+		drawingResults = drawingResults + "Wynik losowania nr " + counterOfDraw + " to: " +  arrayResult +  "<br/>" 
+		document.getElementById("resultOfDraw").innerHTML = drawingResults;
+	
+		//podliczaie tych samych wartosci w tablicy
+		function count() {
+		$( "div" ).remove( ".wynikiLosowania" )
+		arraySummaryList = [];
+		//together = "";
+    arrayWithResultsOfDraws.sort();
+	console.log(arrayWithResultsOfDraws)
+    var current = null;
+    var cnt = 0;
+    for (var i = 0; i < arrayWithResultsOfDraws.length; i++) {
+        if (arrayWithResultsOfDraws[i] != current) {
+            if (cnt > 0) {
+				arraySummaryList.push(cnt + '.' + current);
+                //insideLoop = cnt + '.' + current   + '<br>'
+				//together = together + insideLoop;
+            }
+            current = arrayWithResultsOfDraws[i];
+            cnt = 1;
+        } else {
+            cnt++;
+        }
+    }
+    if (cnt > 0) {
+	//outsideLoop =  cnt + '.' + current  + '<br>'
+	//together = together + outsideLoop;
+	arraySummaryList.push(cnt + '.' + current);
+    }
+	
+	
+	//document.getElementById("summary").innerHTML = together; 
+	arraySummaryList.sort().reverse();
+	for(let j = 0; j < arraySummaryList.length;j++){
+		$('#summary').append('<div class="wynikiLosowania">'+arraySummaryList[j]+'</div>');    
+	}
+	
+
+
+}
+
+count();
+		
+			
+	$("#left-bar").show(500); 
+		}
+		else{
+		document.getElementById("resultOfDraw").innerHTML = "Najpierw wprowadz dane z pliku"
+		}
+	}
+		
+	function addGameManually(){
+		if($('#addNew').attr("lang")==1){
+		$("#addNew").attr("lang","0");
+			$('#addNew').show(500);
+			
+		}
+		else{
+		$("#addNew").attr("lang","1");
+		$('#addNew').hide(500);
+		}
+	}
+		
+
+  </script>
+</body>
+
+
+  </html>
+  
+  
